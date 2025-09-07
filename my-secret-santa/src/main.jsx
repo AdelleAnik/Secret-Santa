@@ -5,8 +5,9 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import NewEventPage from "./pages/NewEventPage";
 import EventPage from "./pages/EventPage";
-import ApolloWrapper from "./apolloWrapper";  
+import ApolloWrapper from "./apollowrapper";  
 import "./index.css";
+import ViewEventsPage from "./pages/ViewEventsPage";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -27,6 +28,7 @@ root.render(
           <Route path="/events/new" element={<NewEventPage />} />
           <Route path="/events/:eventId" element={<EventPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/events" element={<ViewEventsPage />} />
         </Routes>
       </ApolloWrapper>
     </Auth0Provider>
