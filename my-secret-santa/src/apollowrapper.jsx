@@ -29,11 +29,11 @@ export default function ApolloWrapper({ children }) {
             console.warn("Auth0 token fetch failed:", e);
           }
         }
-        if (import.meta.env.DEV && token) {
-          const p = JSON.parse(atob(token.split(".")[1]));
-          console.log("Hasura token aud:", p.aud);
-          console.log("Hasura claims:", p["https://hasura.io/jwt/claims"]);
-        }
+        // if (import.meta.env.DEV && token) {
+        //   const p = JSON.parse(atob(token.split(".")[1]));
+        //   console.log("Hasura token aud:", p.aud);
+        //   console.log("Hasura claims:", p["https://hasura.io/jwt/claims"]);
+        // }
 
         return {
           headers: {
