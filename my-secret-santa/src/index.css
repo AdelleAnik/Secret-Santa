@@ -66,3 +66,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* --- Festive background + subtle snow --- */
+:root {
+  --xmas-red: #d62b35;
+  --xmas-green: #1e7a4b;
+  --xmas-gold: #f6d26b;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+body {
+  /* aurora-like gradient */
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(246, 210, 107, .18), transparent 60%),
+    radial-gradient(800px 400px at 10% -100px, rgba(214, 43, 53, .18), transparent 60%),
+    radial-gradient(900px 500px at 90% -80px, rgba(30, 122, 75, .18), transparent 60%),
+    #0e0f12;
+  background-attachment: fixed;
+}
+
+/* Snowflakes – super subtle */
+.snow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.snow i {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  box-shadow: 0 0 8px rgba(255,255,255,.6);
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); opacity: .3; }
+}

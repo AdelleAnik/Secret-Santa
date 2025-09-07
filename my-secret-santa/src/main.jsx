@@ -3,8 +3,11 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 import App from "./App";
-import NewEventPage from "./pages/NewEventPage"; // <- create this file
+import NewEventPage from "./pages/NewEventPage";
+import EventPage from "./pages/EventPage";
+import ApolloWrapper from "./apollowrapper";  
 import "./index.css";
+import ViewEventsPage from "./pages/ViewEventsPage";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -15,15 +18,19 @@ root.render(
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID || "NxGBTFIHa48X4VbQUw1fKMOoBCkKxVWl"}
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: import.meta.env.VITE_AUTH0_AUDIENCE, // keep if you’re calling Hasura
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE, 
         scope: "openid profile email",
       }}
     >
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/events/new" element={<NewEventPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <ApolloWrapper>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/events/new" element={<NewEventPage />} />
+          <Route path="/events/:eventId" element={<EventPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/events" element={<ViewEventsPage />} />
+        </Routes>
+      </ApolloWrapper>
     </Auth0Provider>
   </BrowserRouter>
 );
